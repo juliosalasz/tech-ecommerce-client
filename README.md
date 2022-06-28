@@ -22,7 +22,7 @@ NODE JS
 
 ## Features
 
-Markup : _ Holds databse on its own Mongo db live server.
+_ Holds databse on its own Mongo db live server.
 _ Database is able to host and post users, products and product images.
 _ New Design with the use of a slider banner and brand marquee.
 _ Homepage displays popular products.
