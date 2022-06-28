@@ -28,15 +28,17 @@ const CategorySection = () => {
           Popular Category Display
           <div>
             {categories.map((category) => {
-              if (category.popular) {
-                return (
-                  <div key={category.id}>
-                    <h2>{category.name}</h2>
-                  </div>
-                );
-              } else {
-                return;
-              }
+              const mapFunction = () => {
+                if (category.popular) {
+                  return (
+                    <div key={category.id}>
+                      <h2>{category.name}</h2>
+                    </div>
+                  );
+                }
+              };
+
+              return mapFunction;
             })}
           </div>
         </div>

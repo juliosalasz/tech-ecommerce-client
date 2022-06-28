@@ -4,10 +4,13 @@ import Axios from "axios";
 //will check if user exist by the server side
 export const createUserFromAuth = async (user) => {
   try {
-    await Axios.post("http://localhost:5000/user/postUser", {
-      name: user.displayName,
-      email: user.email,
-    });
+    await Axios.post(
+      "https://tech-ecommerce-server.herokuapp.com/user/postUser",
+      {
+        name: user.displayName,
+        email: user.email,
+      }
+    );
   } catch (err) {
     console.log(err);
   }
@@ -16,7 +19,7 @@ export const createUserFromAuth = async (user) => {
 export const getUsers = async () => {
   try {
     const productServer = await Axios.get(
-      "http://localhost:5000/products/getProducts"
+      "https://tech-ecommerce-server.herokuapp.com/products/getProducts"
     ).then((res) => res.data);
 
     return productServer;

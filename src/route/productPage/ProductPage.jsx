@@ -52,7 +52,7 @@ const ProductPage = () => {
     <section className="productPageWrapper">
       <div className="productPageContainer">
         <img
-          src={`http://localhost:5000/${productObject.imageUrl}`}
+          src={`https://tech-ecommerce-server.herokuapp.com/${productObject.imageUrl}`}
           alt={productObject.name}
           className="productImage"
         />

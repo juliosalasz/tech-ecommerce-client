@@ -11,7 +11,7 @@ const Shipping = () => {
   }, [setGoingToAdress]);
 
   //after move this state to cart context
-  const [address, setAddress] = useState({
+  const [setAddress] = useState({
     deliveryName: "",
     deliveryLastName: "",
     deliveryAddress: "",

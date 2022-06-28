@@ -3,7 +3,6 @@ import { Fragment } from "react";
 import Shop from "../shop/Shop";
 
 import FeaturedItems from "./featuredItems/FeaturedItems";
-import CategorySection from "./categorySection/categorySection";
 
 import {
   HomepageContainer,

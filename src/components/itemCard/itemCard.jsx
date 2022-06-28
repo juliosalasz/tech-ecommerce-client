@@ -9,7 +9,7 @@ const ItemCard = ({ product }) => {
     <div key={product.id}>
       <Link to={`/shop/${params.id}/${product.id}`}>
         <img
-          src={`http://localhost:5000/${product.imageUrl}`}
+          src={`https://tech-ecommerce-server.herokuapp.com/${product.imageUrl}`}
           alt={product.name}
           className="cardImage"
         />

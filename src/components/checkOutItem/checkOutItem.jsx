@@ -17,7 +17,7 @@ const CheckoutItem = ({ cartItem }) => {
   return (
     <div className="checkoutItemContainer">
       <img
-        src={`http://localhost:5000/${image}`}
+        src={`https://tech-ecommerce-server.herokuapp.com/${image}`}
         alt={name}
         className="imageContainerCheckout"
       />

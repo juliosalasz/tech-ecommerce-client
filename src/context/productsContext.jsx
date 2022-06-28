@@ -12,8 +12,6 @@ export const ProductsProvider = ({ children }) => {
     const loadProducts = async () => {
       const productMap = await getUsers();
       setProducts(productMap);
-
-      console.log(productMap);
     };
     loadProducts();
   }, []);
