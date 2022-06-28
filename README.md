@@ -22,7 +22,7 @@ NODE JS
 
 ## Features
 
-- Holds databse on its own Mongo db live server.
+- Holds database on its own Mongo db live server.
 - Database is able to host and post users, products and product images.
 - New Design with the use of a slider banner and brand marquee.
 - Homepage displays popular products.
