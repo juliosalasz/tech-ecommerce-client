@@ -1,0 +1,49 @@
+.displayContainer {
+  width: 80%;
+}
+
+.displayList {
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+
+  list-style-type: none;
+}
+
+.displayList li:first-child {
+  grid-area: 1 / 1 / 3 / 2;
+  background-color: brown;
+}
+.displayList li {
+  display: flex;
+  background-color: #343434;
+  list-style-type: none;
+}
+
+.displayInterior {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.displayInterior:hover {
+  text-decoration: underline;
+}
+
+.displayInterior h2 {
+  margin: 0;
+  padding: 10px;
+}
+
+.shopCategoryDisplay {
+  display: flex;
+  width: 100%;
+  margin: 10px 10px;
+  border: 2px solid white;
+}

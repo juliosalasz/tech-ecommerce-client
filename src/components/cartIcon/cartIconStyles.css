@@ -1,0 +1,9 @@
+.cartIconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cartIconContainer p {
+  padding-left: 10px;
+  margin: 0;
+}

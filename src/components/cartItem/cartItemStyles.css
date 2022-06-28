@@ -1,0 +1,19 @@
+.cartItemContainer {
+  display: flex;
+}
+
+.cartItemContainer img {
+  width: 150px;
+}
+
+.cartItemDetails {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cartItemDetails h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+}

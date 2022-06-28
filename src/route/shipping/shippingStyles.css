@@ -1,0 +1,21 @@
+.shippingContainer {
+  padding-top: 150px;
+}
+.shippingWrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+.formAddress {
+  display: flex;
+  flex-direction: column;
+}
+.formAddress input {
+  margin: 10px 0;
+  padding: 20px 10px;
+  font-size: 1.2rem;
+  border-radius: 18px;
+  outline: none;
+  border: none;
+  color: #707070;
+  background-color: #c6c6c6;
+}

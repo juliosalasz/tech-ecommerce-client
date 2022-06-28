@@ -1,0 +1,26 @@
+.categoryBarContainer {
+  width: 20%;
+}
+.categoryBarList {
+  margin: 0;
+  padding-left: 0;
+  padding-right: 20px;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.categoryListEntry {
+  padding: 7px 8px;
+}
+
+.categoryListEntry h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+}
+.categoryListEntry:hover {
+  text-decoration: underline;
+  background-color: black;
+  color: white;
+}

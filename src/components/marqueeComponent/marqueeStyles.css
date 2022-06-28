@@ -1,0 +1,12 @@
+.marqueestyle {
+  display: flex;
+  align-items: center;
+}
+
+.image-wrapper {
+  margin: 0 auto;
+}
+
+.imageMarquee {
+  height: 3.5rem;
+}

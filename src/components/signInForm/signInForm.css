@@ -1,0 +1,51 @@
+.t {
+  transition: opacity 0.5s;
+}
+.e {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.signIn {
+  padding-bottom: 1rem;
+}
+
+.signInForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.googleSignIne {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: solid 1px #adadad;
+  padding-top: 1rem;
+}
+
+.signUpLink {
+  padding-top: 1rem;
+}
+
+.signUpLink a {
+  color: #707070;
+}
+.signuplink a:hover {
+  color: #2b2b2b;
+  text-decoration: underline;
+}
+.btnChange {
+  margin-left: 10px;
+  width: 72px;
+  height: 35px;
+  outline: none;
+  border: none;
+  border-radius: 18px;
+  background-color: #4e15cc;
+  color: white;
+}
+
+.btnChange:hover {
+  background-color: #311a84;
+}
