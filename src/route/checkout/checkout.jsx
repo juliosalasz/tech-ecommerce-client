@@ -18,7 +18,7 @@ const CheckOut = () => {
   useEffect(() => {
     setComingFromCheckout(false);
     setGoingToAdress(true);
-  }, [setComingFromCheckout, setGoingToAdress]);
+  }, []);
 
   //we can put a state here that opens up the shipping adress. State must be in cartcontext
 
