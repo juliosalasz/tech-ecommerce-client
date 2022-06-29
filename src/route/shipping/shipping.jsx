@@ -1,6 +1,6 @@
 import { CartContext } from "../../context/cartContext";
 import { UserContext } from "../../context/userContext";
-import { useContext, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import Button from "../../components/button/Button";
 import { postOrder } from "../../api/Api";
 
@@ -11,7 +11,9 @@ const Shipping = () => {
     useContext(CartContext);
 
   const { currentUser } = useContext(UserContext);
-  setGoingToAdress(false);
+  useEffect(() => {
+    setGoingToAdress(false);
+  }, [setGoingToAdress]);
 
   //after move this state to cart context
   const [addressState, setAddressState] = useState({
