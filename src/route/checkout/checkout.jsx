@@ -4,7 +4,6 @@ import { useContext } from "react";
 import Button from "../../components/button/Button";
 import CheckoutItem from "../../components/checkOutItem/checkOutItem";
 import "./checkoutStyles.css";
-import { useEffect } from "react";
 
 const CheckOut = () => {
   const {
@@ -14,11 +13,8 @@ const CheckOut = () => {
     cartTotal,
     setGoingToAdress,
   } = useContext(CartContext);
-
-  useEffect(() => {
-    setComingFromCheckout(false);
-    setGoingToAdress(true);
-  }, []);
+  setComingFromCheckout(false);
+  setGoingToAdress(true);
 
   //we can put a state here that opens up the shipping adress. State must be in cartcontext
 
