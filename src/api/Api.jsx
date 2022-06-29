@@ -41,6 +41,7 @@ export const postOrder = async (user, cartItems, cartTotal, order) => {
         deliveryLastName: order.deliveryLastName,
         deliveryAddress: order.deliveryAddress,
         deliveryPhone: order.deliveryPhone,
+        orderDate: order.orderDate,
       }
     );
   } catch (err) {
