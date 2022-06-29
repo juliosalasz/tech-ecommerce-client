@@ -2,7 +2,7 @@ import { CartContext } from "../../context/cartContext";
 import { UserContext } from "../../context/userContext";
 import { useEffect, useContext, useState } from "react";
 import Button from "../../components/button/Button";
-import { postOrder } from "../api/Api";
+import { postOrder } from "../../api/Api";
 
 import "./shippingStyles.css";
 
