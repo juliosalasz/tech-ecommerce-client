@@ -25,12 +25,12 @@ const Shipping = () => {
 
   //to get the value of all inputs
   const onTextChange = (event) => {
-    event.preventDefault();
     const { name, value } = event.target;
-    setAddressState((prevState) => ({
+    const textState = (prevState) => ({
       ...prevState,
       [name]: value,
-    }));
+    });
+    setAddressState(textState(addressState));
   };
 
   //need a on submit handler
