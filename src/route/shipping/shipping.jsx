@@ -21,7 +21,7 @@ const Shipping = () => {
     deliveryLastName: "",
     deliveryAddress: "",
     deliveryPhone: "",
-    orderDate: "",
+    deliveryDate: "",
   });
 
   //to get the value of all inputs
@@ -30,10 +30,10 @@ const Shipping = () => {
     const textState = (prevState) => ({
       ...prevState,
       [name]: value,
-      orderDate: new Date(),
+      deliveryDate: new Date(),
     });
     setAddressState(textState(addressState));
-    console.log(addressState.orderDate);
+    console.log(addressState.deliveryDate);
   };
 
   //need a on submit handler
