@@ -31,6 +31,7 @@ const Shipping = () => {
       [name]: value,
       deliveryDate: new Date(),
     });
+    console.log(textState(addressState));
     setAddressState(textState(addressState));
   };
 
