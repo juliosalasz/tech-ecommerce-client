@@ -29,7 +29,7 @@ const Shipping = () => {
     const textState = (prevState) => ({
       ...prevState,
       [name]: value,
-      deliveryDate: new Date(),
+      deliveryDate: new Date().toDateString(),
     });
     console.log(textState(addressState));
     const stateStep = textState(addressState);
