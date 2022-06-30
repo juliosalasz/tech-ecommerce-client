@@ -29,20 +29,19 @@ export const getUsers = async () => {
 };
 
 export const postOrder = async (user, cartItems, cartTotal, addressState) => {
-  const orderPostObject = {
-    userName: user.displayName,
-    userEmail: user.email,
-    cartItems: cartItems,
-    cartTotal: cartTotal,
-    deliveryName: addressState.deliveryName,
-    deliveryLastName: addressState.deliveryLastName,
-    deliveryAddress: addressState.deliveryAddress,
-    deliveryPhone: addressState.deliveryPhone,
-    orderDate: addressState.orderDate,
-  };
-
-  console.log(orderPostObject);
   try {
+    const orderPostObject = {
+      userName: user.displayName,
+      userEmail: user.email,
+      cartItems: cartItems,
+      cartTotal: cartTotal,
+      deliveryName: addressState.deliveryName,
+      deliveryLastName: addressState.deliveryLastName,
+      deliveryAddress: addressState.deliveryAddress,
+      deliveryPhone: addressState.deliveryPhone,
+      deliveryDate: addressState.deliveryDate,
+    };
+    console.log(orderPostObject);
     await Axios.post(
       "https://tech-ecommerce-server.herokuapp.com/orders/postOrders",
       orderPostObject
