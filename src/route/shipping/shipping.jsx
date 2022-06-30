@@ -31,10 +31,8 @@ const Shipping = () => {
       [name]: value,
       deliveryDate: new Date().toDateString(),
     });
-    console.log(textState(addressState));
     const stateStep = textState(addressState);
     setAddressState(stateStep);
-    console.log(addressState);
   };
 
   //need a on submit handler
@@ -42,9 +40,6 @@ const Shipping = () => {
   const submitAddressHandler = async (event) => {
     event.preventDefault();
     try {
-      //we must create a date and place it inside the state that will be sent to the reducer
-      console.log(addressState);
-      //here we are missing the user and the cart Items,  then set object in the api object
       await postOrder(currentUser, cartItems, cartTotal, addressState);
       alert("Order has been submitted");
     } catch (err) {
