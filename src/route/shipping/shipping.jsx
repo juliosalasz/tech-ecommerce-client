@@ -33,7 +33,6 @@ const Shipping = () => {
       deliveryDate: new Date(),
     });
     setAddressState(textState(addressState));
-    console.log(typeof addressState.deliveryDate);
   };
 
   //need a on submit handler
