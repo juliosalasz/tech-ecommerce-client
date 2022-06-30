@@ -29,21 +29,23 @@ export const getUsers = async () => {
 };
 
 export const postOrder = async (user, cartItems, cartTotal, addressState) => {
-  console.log(addressState);
+  const orderPostObject = {
+    userName: user.displayName,
+    userEmail: user.email,
+    cartItems: cartItems,
+    cartTotal: cartTotal,
+    deliveryName: addressState.deliveryName,
+    deliveryLastName: addressState.deliveryLastName,
+    deliveryAddress: addressState.deliveryAddress,
+    deliveryPhone: addressState.deliveryPhone,
+    orderDate: addressState.orderDate,
+  };
+
+  console.log(orderPostObject);
   try {
     await Axios.post(
       "https://tech-ecommerce-server.herokuapp.com/orders/postOrders",
-      {
-        userName: user.displayName,
-        userEmail: user.email,
-        cartItems: cartItems,
-        cartTotal: cartTotal,
-        deliveryName: addressState.deliveryName,
-        deliveryLastName: addressState.deliveryLastName,
-        deliveryAddress: addressState.deliveryAddress,
-        deliveryPhone: addressState.deliveryPhone,
-        orderDate: addressState.orderDate,
-      }
+      orderPostObject
     );
   } catch (err) {
     console.log(err);
