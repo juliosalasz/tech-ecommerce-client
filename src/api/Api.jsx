@@ -29,6 +29,7 @@ export const getUsers = async () => {
 };
 
 export const postOrder = async (user, cartItems, cartTotal, order) => {
+  console.log(order);
   try {
     await Axios.post(
       "https://tech-ecommerce-server.herokuapp.com/orders/postOrders",
@@ -48,3 +49,19 @@ export const postOrder = async (user, cartItems, cartTotal, order) => {
     console.log(err);
   }
 };
+
+// const object = {
+//   userName: "Julio Salas",
+//   userEmail: "jscomic@gmail.com",
+//   cartItems: [
+//     {
+//       id: "761",
+//       name: 'Laptop HP 15-ef1009la 15.6" AMD Ryzen 3 4300U QC SSD 4GB RAM',
+//       feature: "256 GB",
+//       price: 459.9,
+//       image: "images/1656275743406.png",
+//       quantity: 1,
+//     },
+//   ],
+//   cartTotal: 459.9,
+// };

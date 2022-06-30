@@ -42,6 +42,7 @@ const Shipping = () => {
     try {
       //we must create a date and place it inside the state that will be sent to the reducer
       setAddress(addressState);
+      console.log(address);
       //here we are missing the user and the cart Items,  then set object in the api object
       await postOrder(currentUser, cartItems, cartTotal, address);
       alert("Order has been submitted");
