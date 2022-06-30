@@ -18,8 +18,10 @@ import CartModal from "./components/cartModal/CartModal";
 import Shipping from "./route/shipping/shipping";
 
 function App() {
-  const { cartIsOpen } = useContext(CartContext);
-  const { currentUser, goingToAdress } = useContext(UserContext);
+  const { cartIsOpen, cartItems } = useContext(CartContext);
+  const { currentUser } = useContext(UserContext);
+  console.log(currentUser);
+  console.log(cartItems);
   return (
     <Fragment>
       {cartIsOpen && <CartModal />}
@@ -33,9 +35,9 @@ function App() {
           {currentUser ? (
             <Route path="/checkout" element={<CheckOut />} />
           ) : null}
-          {goingToAdress ? null : (
-            <Route path="/shipping" element={<Shipping />} />
-          )}
+          {currentUser && cartItems ? (
+            <Route path="/checkout/shipping" element={<Shipping />} />
+          ) : null}
         </Route>
       </Routes>
     </Fragment>

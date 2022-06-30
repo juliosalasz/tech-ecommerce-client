@@ -22,8 +22,7 @@ NODE JS
 
 ## Features
 
-- Holds database on its own Mongo db live server.
-- Database is able to host and post users, products and product images.
+- Holds database on its own Mongo db live server. Database is able to host and post users, products and product images.
 - New Design with the use of a slider banner and brand marquee.
 - Homepage displays popular products.
 - Navigation bar has a cart Icon button and a cart item counting number.
@@ -43,14 +42,16 @@ Transition the site from working with context to using redux and middleware.
 </br>
 Integrate Stripe payment.
 </br>
-Site must post orders into the database for both the user and admin to view.
+Create a component that will let the user see its order history.
 </br>
 Fully responive site with appearing animations when loading.
 </br>
 
 ## Improvements
 
-Product must have a default display if its only the only sku
+Product must have a default display if its only the only sku.
+
+A admin Dashboard for uploading products and get products orders.
 
 ## EXTRA LIBRARIES USED
 

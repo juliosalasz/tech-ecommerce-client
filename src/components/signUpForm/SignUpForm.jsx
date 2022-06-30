@@ -1,4 +1,7 @@
 import { useState, Fragment } from "react";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../context/cartContext";
 import { createUserFromAuth } from "../../api/Api";
 import Button from "../button/Button";
 import { createAuthUserWithEmailAndPassword } from "../../utils/firebaseUtil/firebaseUtil";
@@ -15,6 +18,13 @@ const defaultFormFields = {
 };
 
 const SignUpForm = (props) => {
+  //for the redirect
+  const received = props.received;
+  const navigate = useNavigate();
+
+  const { cartItems } = useContext(CartContext);
+
+  //for the form
   const [formField, setFormField] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formField;
 
@@ -43,8 +53,14 @@ const SignUpForm = (props) => {
       await createUserFromAuth(userObject);
 
       //setCurrent user to state
-
       resetFormFields();
+
+      //redirect
+      if (received === "cartModal" && cartItems) {
+        navigate("/checkout");
+      } else {
+        navigate(-1);
+      }
     } catch (error) {
       console.log("user creation encountered an error", error);
     }

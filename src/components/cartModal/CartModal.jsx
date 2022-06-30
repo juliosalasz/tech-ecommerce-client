@@ -12,27 +12,21 @@ const CartModal = () => {
   const { currentUser } = useContext(UserContext);
 
   //import cart context
-  const {
-    cartIsOpen,
-    setCartIsOpen,
-    cartItems,
-    cartCount,
-    comingFromCheckout,
-    setComingFromCheckout,
-  } = useContext(CartContext);
+  const { cartIsOpen, setCartIsOpen, cartItems, cartCount } =
+    useContext(CartContext);
   const closeCart = () => {
     setCartIsOpen(!cartIsOpen);
   };
+
   const navigate = useNavigate();
+
   const GoToCheckout = () => {
     //if user is sign on then take me to check out else sign in
     if (currentUser) {
       navigate("/checkout");
     } else {
-      //take me to sign in and set state to know that you are coming from checkout
-      navigate("/sign-in");
-      setComingFromCheckout(true);
-      console.log(comingFromCheckout);
+      //pass string to identify that is coming from the cart modal
+      navigate("/sign-in", { state: "cartModal" });
     }
     //and close the modal
     setCartIsOpen(!cartIsOpen);
@@ -76,6 +70,7 @@ const CartModal = () => {
                     Go to Checkout
                   </Button>
                 )}
+
                 <Button buttonType="cartDisplay" onClick={closeCart}>
                   Close Cart
                 </Button>

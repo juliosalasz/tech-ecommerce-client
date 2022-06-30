@@ -4,30 +4,18 @@ import { useContext } from "react";
 import Button from "../../components/button/Button";
 import CheckoutItem from "../../components/checkOutItem/checkOutItem";
 import "./checkoutStyles.css";
-import { useEffect } from "react";
 
 const CheckOut = () => {
-  const {
-    cartItems,
-    cartCount,
-    setComingFromCheckout,
-    cartTotal,
-    setGoingToAdress,
-  } = useContext(CartContext);
+  const { cartItems, cartCount, cartTotal } = useContext(CartContext);
 
-  useEffect(() => {
-    setComingFromCheckout(false);
-    setGoingToAdress(true);
-  }, [setComingFromCheckout, setGoingToAdress]);
+  // useEffect(() => {
+  //   setGoingToAdress(true);
+  // }, [setGoingToAdress]);
 
   //we can put a state here that opens up the shipping adress. State must be in cartcontext
-
-  //place if route on app.js (Done)
-  //place button below total to send me in ()
-  //we can set it off in the shipping
   const navigate = useNavigate();
   const shippingLinkHandler = () => {
-    navigate("/shipping");
+    navigate("/checkout/shipping");
   };
 
   return (

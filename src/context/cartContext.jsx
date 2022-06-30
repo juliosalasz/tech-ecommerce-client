@@ -60,21 +60,13 @@ export const CartContext = createContext({
   clearItemFromCart: () => {},
   //for counting Cart
   cartCount: 0,
-  setComingFromCheckout: () => {},
-  comingFromCheckout: false,
-  setGoingToAdress: () => {},
-  goingToAdress: false,
   cartTotal: 0,
-  setAddress: () => {},
-  address: [],
 });
 
 const INITIAL_STATE = {
   cartIsOpen: false,
   cartItems: [],
   cartCount: 0,
-  comingFromCheckout: false,
-  goingToAdress: false,
   cartTotal: 0,
   address: [],
 };
@@ -82,9 +74,6 @@ const INITIAL_STATE = {
 export const USER_ACTION_TYPES = {
   SET_CART_ITEMS: "SET_CART_ITEMS",
   SET_IS_CART_OPEN: "SET_IS_CART_OPEN",
-  SET_IS_COMING_FROM_CHECKOUT: "SET_IS_COMING_FROM_CHECKOUT",
-  SET_GOING_TO_ADRESS: "SET_GOING_TO_ADRESS",
-  SET_ADDRESS: "SET_ADDRESS",
 };
 
 const cartReducer = (state, action) => {
@@ -101,51 +90,17 @@ const cartReducer = (state, action) => {
         ...state,
         cartIsOpen: payload,
       };
-    case USER_ACTION_TYPES.SET_IS_COMING_FROM_CHECKOUT:
-      return {
-        ...state,
-        comingFromCheckout: payload,
-      };
-    case USER_ACTION_TYPES.SET_GOING_TO_ADRESS:
-      return {
-        ...state,
-        goingToAdress: payload,
-      };
-    case USER_ACTION_TYPES.SET_ADDRESS:
-      return {
-        ...state,
-        address: payload,
-      };
     default:
       throw new Error(`Unhandled type ${type} in cartReducer`);
   }
 };
 
 export const CartProvider = ({ children }) => {
-  const [
-    {
-      cartItems,
-      cartIsOpen,
-      cartCount,
-      cartTotal,
-      comingFromCheckout,
-      goingToAdress,
-      address,
-    },
-    dispatch,
-  ] = useReducer(cartReducer, INITIAL_STATE);
+  const [{ cartItems, cartIsOpen, cartCount, cartTotal, address }, dispatch] =
+    useReducer(cartReducer, INITIAL_STATE);
 
   const setCartIsOpen = (bool) => {
     dispatch(createAction(USER_ACTION_TYPES.SET_IS_CART_OPEN, bool));
-  };
-  const setComingFromCheckout = (bool) => {
-    dispatch(createAction(USER_ACTION_TYPES.SET_IS_COMING_FROM_CHECKOUT, bool));
-  };
-  const setGoingToAdress = (bool) => {
-    dispatch(createAction(USER_ACTION_TYPES.SET_GOING_TO_ADRESS, bool));
-  };
-  const setAddress = (newAdress) => {
-    dispatch(createAction(USER_ACTION_TYPES.SET_ADDRESS, newAdress));
   };
 
   const updateCartItemsReducer = (newCartItems) => {
@@ -195,12 +150,7 @@ export const CartProvider = ({ children }) => {
     clearItemFromCart,
     cartItems,
     cartCount,
-    comingFromCheckout,
-    setComingFromCheckout,
-    goingToAdress,
-    setGoingToAdress,
     cartTotal,
-    setAddress,
     address,
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

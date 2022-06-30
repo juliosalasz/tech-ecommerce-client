@@ -1,18 +1,15 @@
 import { CartContext } from "../../context/cartContext";
 import { UserContext } from "../../context/userContext";
-import { useEffect, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import Button from "../../components/button/Button";
 import { postOrder } from "../../api/Api";
 
 import "./shippingStyles.css";
 
 const Shipping = () => {
-  const { setGoingToAdress, cartItems, cartTotal } = useContext(CartContext);
+  const { cartItems, cartTotal } = useContext(CartContext);
 
   const { currentUser } = useContext(UserContext);
-  useEffect(() => {
-    setGoingToAdress(false);
-  }, [setGoingToAdress]);
 
   //after move this state to cart context
   const [addressState, setAddressState] = useState({

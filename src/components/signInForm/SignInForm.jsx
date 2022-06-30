@@ -22,8 +22,9 @@ const defaultFormFields = {
 };
 
 const SignInForm = (props) => {
+  const received = props.received;
   //Cart context to know if coming from checkout
-  const { cartItems, comingFromCheckout } = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
 
   //
   const [formField, setFormField] = useState(defaultFormFields);
@@ -38,7 +39,7 @@ const SignInForm = (props) => {
 
   //for checking if user comes from chekout
   const isComingfromCheckout = () => {
-    if (comingFromCheckout && cartItems) {
+    if (received === "cartModal" && cartItems) {
       navigate("/checkout");
     } else {
       navigate(-1);

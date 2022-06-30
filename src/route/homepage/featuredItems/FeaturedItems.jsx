@@ -9,7 +9,6 @@ const FeaturedItems = () => {
   return (
     <section className="featuredSection">
       <div className="featuredContent">
-        <h2 className="title">POPULAR PRODUCTS</h2>
         <div className="featuredWrapper">
           <div className="featuredList">
             {FeaturedList.map((item) => (

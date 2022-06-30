@@ -1,33 +1,30 @@
 import { Fragment } from "react";
-
-import Shop from "../shop/Shop";
-
 import FeaturedItems from "./featuredItems/FeaturedItems";
+import HomePageContainerDesktop from "./homePageContainerDesktop/homePageContainerDesktop";
+import HomePageContainerMobile from "./homePageContainerMobile/homePageContainerMobile";
+import useScreenType from "react-screentype-hook";
 
-import {
-  HomepageContainer,
-  GridHomepageContainer,
-  HomeHeader,
-} from "./homepageStyles";
-import Swipper from "../../components/swiperbanner/Swipper";
+// import Shop from "../shop/Shop";
 
 const Homepage = () => {
+  const screenType = useScreenType({
+    mobile: 425,
+    tablet: 767,
+    desktop: 1024,
+    largeDesktop: 1600,
+  });
+
+  //isMobile: true,
+
   return (
     <Fragment>
-      <HomepageContainer>
-        <GridHomepageContainer>
-          <HomeHeader>
-            <h2>
-              TECH JUST
-              <br /> FOR YOU
-            </h2>
-            <h3>Because you Deserve it!</h3>
-          </HomeHeader>
-          <Swipper />
-        </GridHomepageContainer>
-      </HomepageContainer>
+      {screenType.isMobile ? (
+        <HomePageContainerMobile />
+      ) : (
+        <HomePageContainerDesktop />
+      )}
+
       <FeaturedItems />
-      <Shop />
     </Fragment>
   );
 };
