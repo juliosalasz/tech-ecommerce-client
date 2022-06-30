@@ -7,8 +7,7 @@ import { postOrder } from "../../api/Api";
 import "./shippingStyles.css";
 
 const Shipping = () => {
-  const { setGoingToAdress, setAddress, address, cartItems, cartTotal } =
-    useContext(CartContext);
+  const { setGoingToAdress, cartItems, cartTotal } = useContext(CartContext);
 
   const { currentUser } = useContext(UserContext);
   useEffect(() => {
@@ -41,10 +40,9 @@ const Shipping = () => {
     event.preventDefault();
     try {
       //we must create a date and place it inside the state that will be sent to the reducer
-      setAddress(addressState);
-      console.log(address);
+      console.log(addressState);
       //here we are missing the user and the cart Items,  then set object in the api object
-      await postOrder(currentUser, cartItems, cartTotal, address);
+      await postOrder(currentUser, cartItems, cartTotal, addressState);
       alert("Order has been submitted");
     } catch (err) {
       console.log(err);
