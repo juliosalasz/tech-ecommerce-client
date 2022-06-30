@@ -32,7 +32,9 @@ const Shipping = () => {
       deliveryDate: new Date(),
     });
     console.log(textState(addressState));
-    setAddressState(textState(addressState));
+    const stateStep = textState(addressState);
+    setAddressState(stateStep);
+    console.log(addressState);
   };
 
   //need a on submit handler
