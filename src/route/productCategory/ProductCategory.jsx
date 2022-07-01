@@ -1,34 +1,24 @@
 import { useParams } from "react-router-dom";
 import ItemCard from "../../components/itemCard/itemCard";
 import ShopCategoryBar from "../../components/shopCategoryBar/ShopCategoryBar";
+import Spinner from "../../components/spinner/spinner";
 
 import { useSelector } from "react-redux/es/exports";
 import { selectProduct } from "../../store/products/productsSelector";
 
-import { useDispatch } from "react-redux/es/exports";
-import { useEffect } from "react";
-
-import { getProducts } from "../../api/Api";
-import { setProduct } from "../../store/products/productsActions";
+import { selectProductsIsLoading } from "../../store/products/productsSelector";
 
 import {
   CategoryWrapper,
   CategoryContainer,
   CategoryProductDisplay,
   CategoryDisplay,
-} from "./productCategoryStyles.js";
+} from "./productCategoryStyles";
 
 const ProductCategory = () => {
   const params = useParams();
-  //Use Effect here
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const loadProducts = async () => {
-      const productMap = await getProducts();
-      dispatch(setProduct(productMap));
-    };
-    loadProducts();
-  }, [dispatch]);
+
+  const isLoading = useSelector(selectProductsIsLoading);
 
   const products = useSelector(selectProduct);
 
@@ -40,17 +30,21 @@ const ProductCategory = () => {
 
   return (
     <CategoryWrapper id="productCategory">
-      <CategoryDisplay>
-        <ShopCategoryBar productCategory={products} />
-        <CategoryContainer>
-          <h1>{params.id}</h1>
-          <CategoryProductDisplay>
-            {id.PRODUCTS.map((product) => {
-              return <ItemCard key={product.id} product={product} />;
-            })}
-          </CategoryProductDisplay>
-        </CategoryContainer>
-      </CategoryDisplay>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <CategoryDisplay>
+          <ShopCategoryBar productCategory={products} />
+          <CategoryContainer>
+            <h1>{params.id}</h1>
+            <CategoryProductDisplay>
+              {id.PRODUCTS.map((product) => {
+                return <ItemCard key={product.id} product={product} />;
+              })}
+            </CategoryProductDisplay>
+          </CategoryContainer>
+        </CategoryDisplay>
+      )}
     </CategoryWrapper>
   );
 };
