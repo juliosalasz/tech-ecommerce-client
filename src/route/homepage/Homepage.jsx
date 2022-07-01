@@ -1,3 +1,4 @@
+import React from "react";
 import { Fragment } from "react";
 import FeaturedItems from "./featuredItems/FeaturedItems";
 import HomePageContainerDesktop from "./homePageContainerDesktop/homePageContainerDesktop";

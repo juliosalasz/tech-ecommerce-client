@@ -1,21 +1,32 @@
 import "./cartModalStyles.css";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { useTransition, animated } from "react-spring";
-import { CartContext } from "../../context/cartContext";
-import { UserContext } from "../../context/userContext";
 import Button from "../button/Button";
 import CartItem from "../cartItem/cartItem";
 
-const CartModal = () => {
-  //import userContext
-  const { currentUser } = useContext(UserContext);
+//redux
+import { selectCartItems } from "../../store/cart/cartSelectors";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { useSelector } from "react-redux/es/exports";
+import { setIsCartOpen } from "../../store/cart/cartActions";
+import { selectCurrentUser } from "../../store/user/userSelector";
+import {
+  selectCartCount,
+  selectIsCartOpen,
+} from "../../store/cart/cartSelectors";
 
-  //import cart context
-  const { cartIsOpen, setCartIsOpen, cartItems, cartCount } =
-    useContext(CartContext);
+const CartModal = () => {
+  //import user reducer
+  const currentUser = useSelector(selectCurrentUser);
+
+  //import cart reducer
+  const dispatch = useDispatch();
+  const cartCount = useSelector(selectCartCount);
+  const isCartOpen = useSelector(selectIsCartOpen);
+  const cartItems = useSelector(selectCartItems);
+
   const closeCart = () => {
-    setCartIsOpen(!cartIsOpen);
+    dispatch(setIsCartOpen(!isCartOpen));
   };
 
   const navigate = useNavigate();
@@ -29,14 +40,14 @@ const CartModal = () => {
       navigate("/sign-in", { state: "cartModal" });
     }
     //and close the modal
-    setCartIsOpen(!cartIsOpen);
+    dispatch(setIsCartOpen(!isCartOpen));
   };
-  const transitions = useTransition(cartIsOpen, {
+  const transitions = useTransition(isCartOpen, {
     expires: 0,
     from: { opacity: 0, transform: "translateX(40px)" },
     enter: { opacity: 1, transform: "translateX(0px)" },
     leave: { opacity: 0, transform: "translateX(40px)" },
-    reverse: cartIsOpen,
+    reverse: isCartOpen,
     delay: 200,
   });
   return (

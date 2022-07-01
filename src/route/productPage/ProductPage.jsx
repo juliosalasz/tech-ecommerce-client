@@ -1,18 +1,23 @@
 import { useLocation } from "react-router-dom";
 import Button from "../../components/button/Button";
-import { CartContext } from "../../context/cartContext";
-import { useContext, useState } from "react";
-import { ProductContext } from "../../context/productsContext";
+import { useState } from "react";
 import "./productPageStyles.css";
-
 import { ListButtonToggle } from "./productPageStyles";
+
+//redux
+import { useSelector } from "react-redux/es/exports";
+import { selectCartItems } from "../../store/cart/cartSelectors";
+import { selectProduct } from "../../store/products/productsSelector";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { addItemToCart } from "../../store/cart/cartActions";
 
 const ProductPage = () => {
   //state for tab
   const [skuState, setSkuState] = useState(0);
 
   //destructure for getting the product info
-  const { products } = useContext(ProductContext);
+  const cartItems = useSelector(selectCartItems);
+  const products = useSelector(selectProduct);
   const location = useLocation();
   const categoryName = location.pathname.split("/");
 
@@ -32,21 +37,19 @@ const ProductPage = () => {
     setPrice(productObject.skus[i].price);
   };
 
-  //for passing item to cart
-  const { addItemToCart } = useContext(CartContext);
+  const dispatch = useDispatch();
+
   //create object with the needed info
   const productAdded = {
-    //id of the sku of the product
     id: productObject.skus[skuState].sku,
-    //name of product
     name: productObject.name,
-    //adding feauture to distinguish different skus
     feature: productObject.skus[skuState].feature,
-    //price will be the current price in the state
     price: price,
     image: productObject.imageUrl,
   };
-  const addProductToCart = () => addItemToCart(productAdded);
+
+  const addProductToCart = () =>
+    dispatch(addItemToCart(cartItems, productAdded));
 
   return (
     <section className="productPageWrapper">

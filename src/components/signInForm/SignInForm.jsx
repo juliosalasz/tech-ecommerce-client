@@ -5,8 +5,12 @@ import {
 
 import { useNavigate } from "react-router-dom";
 
-import { Fragment, useState, useContext } from "react";
-import { CartContext } from "../../context/cartContext";
+import { Fragment, useState } from "react";
+
+//redux
+import { useSelector } from "react-redux/es/exports";
+import { selectCartItems } from "../../store/cart/cartSelectors";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
@@ -24,7 +28,7 @@ const defaultFormFields = {
 const SignInForm = (props) => {
   const received = props.received;
   //Cart context to know if coming from checkout
-  const { cartItems } = useContext(CartContext);
+  const cartItems = useSelector(selectCartItems);
 
   //
   const [formField, setFormField] = useState(defaultFormFields);

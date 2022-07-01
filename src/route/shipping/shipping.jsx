@@ -1,15 +1,21 @@
-import { CartContext } from "../../context/cartContext";
-import { UserContext } from "../../context/userContext";
-import { useContext, useState } from "react";
+import { selectCurrentUser } from "../../store/user/userSelector";
+import { useState } from "react";
 import Button from "../../components/button/Button";
 import { postOrder } from "../../api/Api";
+//redux
+import {
+  selectCartItems,
+  selectCartTotal,
+} from "../../store/cart/cartSelectors";
+import { useSelector } from "react-redux/es/exports";
 
 import "./shippingStyles.css";
 
 const Shipping = () => {
-  const { cartItems, cartTotal } = useContext(CartContext);
+  const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
 
-  const { currentUser } = useContext(UserContext);
+  const currentUser = useSelector(selectCurrentUser);
 
   //after move this state to cart context
   const [addressState, setAddressState] = useState({
@@ -37,6 +43,7 @@ const Shipping = () => {
   const submitAddressHandler = async (event) => {
     event.preventDefault();
     try {
+      //here the order is sent to the api
       await postOrder(currentUser, cartItems, cartTotal, addressState);
       alert("Order has been submitted");
     } catch (err) {

@@ -1,18 +1,26 @@
-import { CartContext } from "../../context/cartContext";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+
 import Button from "../../components/button/Button";
 import CheckoutItem from "../../components/checkOutItem/checkOutItem";
 import "./checkoutStyles.css";
 
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import {
+  selectCartItems,
+  selectCartTotal,
+  selectCartCount,
+} from "../../store/cart/cartSelectors";
+
 const CheckOut = () => {
-  const { cartItems, cartCount, cartTotal } = useContext(CartContext);
+  const cartItems = useSelector(selectCartItems);
+  const cartCount = useSelector(selectCartCount);
+  const cartTotal = useSelector(selectCartTotal);
 
   // useEffect(() => {
   //   setGoingToAdress(true);
   // }, [setGoingToAdress]);
 
-  //we can put a state here that opens up the shipping adress. State must be in cartcontext
+  //we can put a state here that opens up the shipping adress.
   const navigate = useNavigate();
   const shippingLinkHandler = () => {
     navigate("/checkout/shipping");

@@ -1,12 +1,14 @@
 import { useState, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { CartContext } from "../../context/cartContext";
 import { createUserFromAuth } from "../../api/Api";
 import Button from "../button/Button";
 import { createAuthUserWithEmailAndPassword } from "../../utils/firebaseUtil/firebaseUtil";
 import FormInput from "../formInput/FormInput";
 import { faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
+//redux
+import { selectCartItems } from "../../store/cart/cartSelectors";
+import { useSelector } from "react-redux/es/exports";
 
 import "./signUpFormStyles.css";
 
@@ -22,7 +24,7 @@ const SignUpForm = (props) => {
   const received = props.received;
   const navigate = useNavigate();
 
-  const { cartItems } = useContext(CartContext);
+  const cartItems = useSelector(selectCartItems);
 
   //for the form
   const [formField, setFormField] = useState(defaultFormFields);

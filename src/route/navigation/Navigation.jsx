@@ -1,14 +1,19 @@
-import { useState, useEffect, Fragment, useContext } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
-import { UserContext } from "../../context/userContext";
+
+//to get the store from redux
+import { useSelector } from "react-redux/es/exports";
+import { selectCurrentUser } from "../../store/user/userSelector";
+
 import { SignOutUser } from "../../utils/firebaseUtil/firebaseUtil";
 import CartIcon from "../../components/cartIcon/cartIcon";
 
 import "./navigationStyle.css";
 
 const Navigation = () => {
-  //userContext
-  const { currentUser } = useContext(UserContext);
+  //Current user from redux
+  const currentUser = useSelector(selectCurrentUser);
+
   //sign out function
   const signOutHandler = async () => {
     //run sign out from firebase utils

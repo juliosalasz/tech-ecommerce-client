@@ -1,66 +1,70 @@
-# Tech Ecommerce Website Client
+# Getting Started with Create React App
 
-A Full Stack ecommerce client site, created using the MERN Stack. Based on my previous project with new improvements.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Skills Used
+## Available Scripts
 
-GRAPHIC DESIGN
-</br>
-UI/UX
-</br>
-HTML & CSS
-</br>
-JAVASCRIPT
-</br>
-REACT
-</br>
-MONGO DB
-</br>
-EXPRESS
-</br>
-NODE JS
+In the project directory, you can run:
 
-## Features
+### `npm start`
 
-- Holds database on its own Mongo db live server. Database is able to host and post users, products and product images.
-- New Design with the use of a slider banner and brand marquee.
-- Homepage displays popular products.
-- Navigation bar has a cart Icon button and a cart item counting number.
-- Passwordless sign in with google sign in, sign in with email and password or register using with email.
-- Nested routes for categories and every product has his own page.
-- Shop page displays all categories and has a display for featured categories.
-- Product page will display product information such as name, brand and a description text.
-- Product page keeps track of product stock and gives user the chance to pick between different features. Add to cart button will react if out of stock.
-- Cart will display a sidebar in the screen with the product information. Button "Go to checkout", will react if cart is empty.
-- Cart will require the user to sign in and then redirect to the checkout page.
-- User is able to increase the number of products or remove product from the cart.
-- User will require to give a shipping address before paying.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## On development
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-Transition the site from working with context to using redux and middleware.
-</br>
-Integrate Stripe payment.
-</br>
-Create a component that will let the user see its order history.
-</br>
-Fully responive site with appearing animations when loading.
-</br>
+### `npm test`
 
-## Improvements
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Product must have a default display if its only the only sku.
+### `npm run build`
 
-A admin Dashboard for uploading products and get products orders.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## EXTRA LIBRARIES USED
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-REACT ROUTER v6
-</br>
-REDUX THUNK
-</br>
-REDUX SAGA
-</br>
-STYLED COMPONENTS
-</br>
-GOOGLE FIREBASE AUTH
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

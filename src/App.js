@@ -1,12 +1,14 @@
 import "./App.css";
 import { Fragment } from "react";
-
 import { Routes, Route } from "react-router-dom";
 
-import { useContext } from "react";
-import { CartContext } from "./context/cartContext";
-import { UserContext } from "./context/userContext";
+//Imports for Redux
+import { useDispatch } from "react-redux/es/exports";
+import { useEffect } from "react";
+import { createUserFromAuth } from "./api/Api";
+import { onAuthStateChangedListener } from "./utils/firebaseUtil/firebaseUtil";
 
+//page components
 import Homepage from "./route/homepage/Homepage";
 import Navigation from "./route/navigation/Navigation";
 import Shop from "./route/shop/Shop";
@@ -17,14 +19,35 @@ import CheckOut from "./route/checkout/checkout";
 import CartModal from "./components/cartModal/CartModal";
 import Shipping from "./route/shipping/shipping";
 
+//store from redux
+import { useSelector } from "react-redux/es/exports";
+import { selectCurrentUser } from "./store/user/userSelector";
+import { selectIsCartOpen } from "./store/cart/cartSelectors";
+import { selectCartItems } from "./store/cart/cartSelectors";
+
+// sets from redux
+import { setCurrentUser } from "./store/user/userAction";
+
 function App() {
-  const { cartIsOpen, cartItems } = useContext(CartContext);
-  const { currentUser } = useContext(UserContext);
-  console.log(currentUser);
-  console.log(cartItems);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      if (user) {
+        createUserFromAuth(user);
+      }
+      //here the new "state" reducer is used
+      dispatch(setCurrentUser(user));
+    });
+    return unsubscribe;
+  }, [dispatch]);
+
+  const currentUser = useSelector(selectCurrentUser);
+  const isCartOpen = useSelector(selectIsCartOpen);
+  const cartItems = useSelector(selectCartItems);
+
   return (
     <Fragment>
-      {cartIsOpen && <CartModal />}
+      {isCartOpen ? <CartModal /> : null}
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route index element={<Homepage />} />

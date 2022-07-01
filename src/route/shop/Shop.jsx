@@ -7,12 +7,27 @@ import {
 import ShopCategoryBar from "../../components/shopCategoryBar/ShopCategoryBar";
 import ShopCategoryDisplay from "../../components/shopCategoryDisplay/ShopCategoryDisplay";
 
-import { useContext } from "react";
-import { ProductContext } from "../../context/productsContext";
+import { useDispatch } from "react-redux/es/exports";
+import { useEffect } from "react";
+
+import { useSelector } from "react-redux/es/exports";
+import { selectProduct } from "../../store/products/productsSelector";
+
+import { getProducts } from "../../api/Api";
+import { setProduct } from "../../store/products/productsActions";
 
 const Shop = () => {
-  //remember to replace categories with products for the internal components
-  const { products } = useContext(ProductContext);
+  //fetch call of all products
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const loadProducts = async () => {
+      const productMap = await getProducts();
+      dispatch(setProduct(productMap));
+    };
+    loadProducts();
+  }, [dispatch]);
+
+  const products = useSelector(selectProduct);
   return (
     <ShopContainer id="CategorySection">
       <CategoryContainer>

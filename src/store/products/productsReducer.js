@@ -1,0 +1,22 @@
+import { PRODUCT_ACTION_TYPES } from "./productTypes";
+
+export const PRODUCTS_INITIAL_STATE = {
+  products: [],
+};
+
+export const productsReducer = (
+  state = PRODUCTS_INITIAL_STATE,
+  action = []
+) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    case PRODUCT_ACTION_TYPES.SET_PRODUCTS:
+      return {
+        ...state,
+        products: payload,
+      };
+    default:
+      return state;
+  }
+};
