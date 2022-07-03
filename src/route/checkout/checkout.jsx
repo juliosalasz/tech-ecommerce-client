@@ -16,10 +16,6 @@ const CheckOut = () => {
   const cartCount = useSelector(selectCartCount);
   const cartTotal = useSelector(selectCartTotal);
 
-  // useEffect(() => {
-  //   setGoingToAdress(true);
-  // }, [setGoingToAdress]);
-
   //we can put a state here that opens up the shipping adress.
   const navigate = useNavigate();
   const shippingLinkHandler = () => {

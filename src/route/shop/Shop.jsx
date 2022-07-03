@@ -13,13 +13,13 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux/es/exports";
 import { selectProduct } from "../../store/products/productsSelector";
 
-import { fetchProductsAsync } from "../../store/products/productsActions";
+import { fetchProductStart } from "../../store/products/productsActions";
 
 const Shop = () => {
   //fetch call of all products
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchProductsAsync());
+    dispatch(fetchProductStart());
   }, [dispatch]);
 
   const products = useSelector(selectProduct);

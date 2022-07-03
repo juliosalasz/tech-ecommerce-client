@@ -1,5 +1,21 @@
 import Axios from "axios";
 
+//need a function to get the data and get the name by searching for the email
+
+export const getUsers = async (userEmail) => {
+  try {
+    const { data } = await Axios.get(
+      "https://tech-ecommerce-server.herokuapp.com/user/getUser",
+      {}
+    );
+    //datafilter should give me the name from the account
+    const dataFilter = data.find(({ email }) => email === userEmail);
+    return dataFilter;
+  } catch (error) {
+    console.log(error, "error from getUsers");
+  }
+};
+
 //function that send the data of google user to the mongo db server
 //will check if user exist by the server side
 export const createUserFromAuth = async (user) => {
@@ -11,6 +27,12 @@ export const createUserFromAuth = async (user) => {
         email: user.email,
       }
     );
+    //here it should probably return something
+    const userAuth = {
+      email: user.email,
+      name: user.displayName,
+    };
+    return userAuth;
   } catch (err) {
     console.log(err);
   }

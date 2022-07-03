@@ -1,10 +1,13 @@
 import { useState, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
-import { createUserFromAuth } from "../../api/Api";
+
 import Button from "../button/Button";
-import { createAuthUserWithEmailAndPassword } from "../../utils/firebaseUtil/firebaseUtil";
+
 import FormInput from "../formInput/FormInput";
 import { faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
+import { useDispatch } from "react-redux";
+import { signUpStart } from "../../store/user/userAction";
 
 //redux
 import { selectCartItems } from "../../store/cart/cartSelectors";
@@ -29,6 +32,7 @@ const SignUpForm = (props) => {
   //for the form
   const [formField, setFormField] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formField;
+  const dispatch = useDispatch();
 
   //reset inputs after submission
   const resetFormFields = () => {
@@ -46,13 +50,16 @@ const SignUpForm = (props) => {
     }
     //send user to server
     try {
-      await createAuthUserWithEmailAndPassword(email, password);
-      const userObject = {
-        displayName,
-        email,
-      };
-      //   await createUserFromAuth(user);
-      await createUserFromAuth(userObject);
+      //Saga way to sign up
+      dispatch(signUpStart(email, password, displayName));
+
+      //Old Way
+      // await createAuthUserWithEmailAndPassword(email, password);
+      // const userObject = {
+      //   displayName,
+      //   email,
+      // };
+      // await createUserFromAuth(userObject);
 
       //setCurrent user to state
       resetFormFields();

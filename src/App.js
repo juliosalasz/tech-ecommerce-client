@@ -5,9 +5,6 @@ import { Routes, Route } from "react-router-dom";
 //Imports for Redux
 import { useDispatch } from "react-redux/es/exports";
 import { useEffect } from "react";
-import { createUserFromAuth } from "./api/Api";
-import { onAuthStateChangedListener } from "./utils/firebaseUtil/firebaseUtil";
-
 //page components
 import Homepage from "./route/homepage/Homepage";
 import Navigation from "./route/navigation/Navigation";
@@ -26,19 +23,13 @@ import { selectIsCartOpen } from "./store/cart/cartSelectors";
 import { selectCartItems } from "./store/cart/cartSelectors";
 
 // sets from redux
-import { setCurrentUser } from "./store/user/userAction";
+import { checkUserSession } from "./store/user/userAction";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener((user) => {
-      if (user) {
-        createUserFromAuth(user);
-      }
-      //here the new "state" reducer is used
-      dispatch(setCurrentUser(user));
-    });
-    return unsubscribe;
+    // getCurrentUser().then((user) => console.log(user));
+    dispatch(checkUserSession());
   }, [dispatch]);
 
   const currentUser = useSelector(selectCurrentUser);

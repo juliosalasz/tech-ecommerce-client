@@ -1,15 +1,15 @@
-import {
-  signInWithGooglePopup,
-  signInAuthUserWithEmailAndPassword,
-} from "../../utils/firebaseUtil/firebaseUtil";
-
 import { useNavigate } from "react-router-dom";
 
 import { Fragment, useState } from "react";
+import { useDispatch } from "react-redux/es/exports";
 
 //redux
 import { useSelector } from "react-redux/es/exports";
 import { selectCartItems } from "../../store/cart/cartSelectors";
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from "../../store/user/userAction";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
@@ -26,6 +26,7 @@ const defaultFormFields = {
 };
 
 const SignInForm = (props) => {
+  const dispatch = useDispatch();
   const received = props.received;
   //Cart context to know if coming from checkout
   const cartItems = useSelector(selectCartItems);
@@ -52,9 +53,9 @@ const SignInForm = (props) => {
 
   //For creating user with google
   const logGoogleUser = async () => {
-    //extract user from the sign in auth
-    await signInWithGooglePopup();
-    //send user data to server function
+    dispatch(googleSignInStart());
+
+    //re send to other place
     isComingfromCheckout();
   };
 
@@ -64,8 +65,7 @@ const SignInForm = (props) => {
 
     //send user to server
     try {
-      await signInAuthUserWithEmailAndPassword(email, password);
-
+      dispatch(emailSignInStart(email, password));
       //Will reset the form
       resetFormFields();
       isComingfromCheckout();

@@ -2,22 +2,23 @@ import { useState, useEffect, Fragment } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 
 //to get the store from redux
-import { useSelector } from "react-redux/es/exports";
+import { useSelector, useDispatch } from "react-redux/es/exports";
 import { selectCurrentUser } from "../../store/user/userSelector";
+import { signOutStart } from "../../store/user/userAction";
 
-import { SignOutUser } from "../../utils/firebaseUtil/firebaseUtil";
 import CartIcon from "../../components/cartIcon/cartIcon";
 
 import "./navigationStyle.css";
 
 const Navigation = () => {
+  const dispatch = useDispatch();
   //Current user from redux
   const currentUser = useSelector(selectCurrentUser);
 
   //sign out function
-  const signOutHandler = async () => {
+  const signOutHandler = () => {
     //run sign out from firebase utils
-    await SignOutUser();
+    dispatch(signOutStart());
   };
 
   //Responsive Hamburger
