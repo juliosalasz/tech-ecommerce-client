@@ -3,7 +3,6 @@ import {
   GridHomepageContainer,
   HomeHeader,
 } from "./homepageStyles";
-import swipperBannerMobile from "../../../components/swipperBannerMobile/swipperBannerMobile";
 
 const HomePageContainerMobile = () => {
   return (

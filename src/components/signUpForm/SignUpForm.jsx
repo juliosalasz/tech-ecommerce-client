@@ -53,14 +53,6 @@ const SignUpForm = (props) => {
       //Saga way to sign up
       dispatch(signUpStart(email, password, displayName));
 
-      //Old Way
-      // await createAuthUserWithEmailAndPassword(email, password);
-      // const userObject = {
-      //   displayName,
-      //   email,
-      // };
-      // await createUserFromAuth(userObject);
-
       //setCurrent user to state
       resetFormFields();
 

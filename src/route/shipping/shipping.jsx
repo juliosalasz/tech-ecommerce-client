@@ -2,6 +2,7 @@ import { selectCurrentUser } from "../../store/user/userSelector";
 import { useState } from "react";
 import Button from "../../components/button/Button";
 import { postOrder } from "../../api/Api";
+import PaymentForm from "../../components/paymentForm/paymentForm";
 //redux
 import {
   selectCartItems,
@@ -88,6 +89,7 @@ const Shipping = () => {
               onChange={onTextChange}
             />
             <Button>Place Order</Button>
+            <PaymentForm />
           </form>
         </div>
       </div>
