@@ -38,9 +38,6 @@ NODE JS
 
 ## On development
 
-Integrate Stripe payment.
-</br>
-
 Fully responive site with appearing animations when loading.
 </br>
 
