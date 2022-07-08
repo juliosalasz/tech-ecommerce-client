@@ -56,8 +56,8 @@ const Navigation = () => {
 
   return (
     <Fragment>
-      <nav className="navBar">
-        <div className={`navContainer ${navClass} ${navScrollClass}`}>
+      <nav className={`navBar ${navClass} ${navScrollClass}`}>
+        <div className="navContainer">
           <h1>TECHItOut</h1>
           <div className="menu">
             <ul className="menuList">

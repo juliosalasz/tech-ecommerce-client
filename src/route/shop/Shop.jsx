@@ -26,7 +26,6 @@ const Shop = () => {
   return (
     <ShopContainer id="CategorySection">
       <CategoryContainer>
-        <h2>CATEGORIES</h2>
         <CategoryDisplayContainer>
           <ShopCategoryBar productCategory={products} />
           <ShopCategoryDisplay productCategory={products} />

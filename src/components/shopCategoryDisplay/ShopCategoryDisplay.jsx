@@ -29,15 +29,3 @@ const ShopCategoryDisplay = ({ productCategory }) => {
 };
 
 export default ShopCategoryDisplay;
-
-// {productCategory.PRODUCTS.filter((category) => category.popular).map(
-//   (popularCategory) => {
-//     return (
-//       <li key={popularCategory.id}>
-//         <div className="displayInterior">
-//           <h2>{popularCategory.name}</h2>
-//         </div>
-//       </li>
-//     );
-//   }
-// )}

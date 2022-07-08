@@ -34,33 +34,3 @@
     grid-template-rows: repeat(2, 1fr);
   }
 }
-
-/* .featuredSection {
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-}
-.featuredContent {
-  width: 100%;
-}
-.featuredWrapper {
-  margin: 0 auto;
-}
-.title {
-  width: 80%;
-  margin: 0 auto;
-  text-align: left;
-  font-size: 3rem;
-  padding-bottom: 70px;
-}
-.featuredList {
-  height: 600px;
-  margin: 0 auto;
-  padding-bottom: 100px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-} */

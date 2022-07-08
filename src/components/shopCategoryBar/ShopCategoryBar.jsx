@@ -4,16 +4,17 @@ import "./shopCategoryBar.css";
 const ShopCategoryBar = ({ productCategory }) => {
   return (
     <div className="categoryBarContainer">
+      <h2 className="categoryTitle">CATEGORIES</h2>
       <ul className="categoryBarList">
         {productCategory.map((category) => {
           return (
-            <div key={category.id}>
+            <li key={category.id}>
               <Link to={`/shop/${category.Category}`}>
-                <li className="categoryListEntry">
+                <div className="categoryListEntry">
                   <h2>{category.Category}</h2>
-                </li>
+                </div>
               </Link>
-            </div>
+            </li>
           );
         })}
       </ul>
