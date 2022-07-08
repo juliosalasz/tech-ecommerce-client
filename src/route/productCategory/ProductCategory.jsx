@@ -8,6 +8,8 @@ import { selectProduct } from "../../store/products/productsSelector";
 
 import { selectProductsIsLoading } from "../../store/products/productsSelector";
 
+import useScreenType from "react-screentype-hook";
+
 import {
   CategoryWrapper,
   CategoryContainer,
@@ -17,16 +19,21 @@ import {
 
 const ProductCategory = () => {
   const params = useParams();
-
   const isLoading = useSelector(selectProductsIsLoading);
-
   const products = useSelector(selectProduct);
 
   const paramFilter = products.filter(
     (category) => category.Category === params.id
   );
-
   const [id] = paramFilter;
+
+  //screentype render
+  const screenType = useScreenType({
+    mobile: 425,
+    tablet: 767,
+    desktop: 1024,
+    largeDesktop: 1600,
+  });
 
   return (
     <CategoryWrapper id="productCategory">
@@ -34,7 +41,10 @@ const ProductCategory = () => {
         <Spinner />
       ) : (
         <CategoryDisplay>
-          <ShopCategoryBar productCategory={products} />
+          {screenType.isDesktop ? (
+            <ShopCategoryBar productCategory={products} />
+          ) : null}
+
           <CategoryContainer>
             <h1>{params.id}</h1>
             <CategoryProductDisplay>

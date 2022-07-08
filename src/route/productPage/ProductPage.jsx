@@ -1,8 +1,17 @@
 import { useLocation } from "react-router-dom";
 import Button from "../../components/button/Button";
 import { useState } from "react";
+import useScreenType from "react-screentype-hook";
 import "./productPageStyles.css";
-import { ListButtonToggle } from "./productPageStyles";
+import {
+  ListButtonToggle,
+  ProductPageContainer,
+  StockContainer,
+  ProductImage,
+  ProductStockPrice,
+  ProductPageWrapper,
+  ProductTitle,
+} from "./productPageStyles";
 
 //redux
 import { useSelector } from "react-redux/es/exports";
@@ -12,6 +21,12 @@ import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { addItemToCart } from "../../store/cart/cartActions";
 
 const ProductPage = () => {
+  const screenType = useScreenType({
+    mobile: 425,
+    tablet: 767,
+    desktop: 1024,
+  });
+
   //state for tab
   const [skuState, setSkuState] = useState(0);
 
@@ -52,26 +67,26 @@ const ProductPage = () => {
     dispatch(addItemToCart(cartItems, productAdded));
 
   return (
-    <section className="productPageWrapper">
-      <div className="productPageContainer">
-        <img
+    <ProductPageWrapper>
+      <ProductPageContainer>
+        <ProductImage
           src={`https://tech-ecommerce-server.herokuapp.com/${productObject.imageUrl}`}
           alt={productObject.name}
           className="productImage"
         />
         <div className="productInfo">
-          <h2 className="productTitle">{productObject.name.toUpperCase()}</h2>
+          <ProductTitle>{productObject.name.toUpperCase()}</ProductTitle>
           <h3 className="productBrand">{productObject.brand.toUpperCase()}</h3>
-          <div className="productStockPrice">
+          <ProductStockPrice>
             <h3 className="productPrice">{`$${price}`}</h3>
-            <div className="stockContainer">
+            <StockContainer>
               {productObject.skus[skuState].quantity !== 0 ? (
                 <p className="stock">IN STOCK</p>
               ) : (
                 <p className="noStock">OUT OF STOCK</p>
               )}
-            </div>
-          </div>
+            </StockContainer>
+          </ProductStockPrice>
           <div className="productDescription">
             <p>{productObject.description}</p>
           </div>
@@ -95,23 +110,28 @@ const ProductPage = () => {
           {productObject.skus[skuState].quantity !== 0 ? (
             <Button
               type="button"
-              buttonType="cartButton"
+              buttonType={`${
+                screenType.isDesktop ? "cartButton" : "cartDisplay"
+              }`}
               onClick={addProductToCart}
             >
               Add to Cart
             </Button>
           ) : (
-            <Button buttonType="disabled">Add to cart</Button>
+            <Button
+              buttonType={`${
+                screenType.isDesktop && screenType.largeDesktop
+                  ? "disabled"
+                  : "disabledCart"
+              }`}
+            >
+              Add to cart
+            </Button>
           )}
         </div>
-      </div>
-    </section>
+      </ProductPageContainer>
+    </ProductPageWrapper>
   );
 };
 
 export default ProductPage;
-// {productList.skus[skuState].quantity !== 0 ? (
-//   <p>In Stock</p>
-// ) : (
-//   <p>Out of Stock</p>
-// )}

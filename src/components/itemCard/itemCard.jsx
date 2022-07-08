@@ -6,7 +6,7 @@ const ItemCard = ({ product }) => {
   const params = useParams();
 
   return (
-    <div key={product.id}>
+    <div className="productCard" key={product.id}>
       <Link to={`/shop/${params.id}/${product.id}`}>
         <img
           src={`https://tech-ecommerce-server.herokuapp.com/${product.imageUrl}`}
@@ -16,9 +16,9 @@ const ItemCard = ({ product }) => {
       </Link>
 
       <h3>{product.brand}</h3>
-      <h2>
-        <Link to={`/shop/${params.id}/${product.id}`}>{product.name}</Link>
-      </h2>
+      <Link className="itemTitle" to={`/shop/${params.id}/${product.id}`}>
+        {product.name}
+      </Link>
     </div>
   );
 };

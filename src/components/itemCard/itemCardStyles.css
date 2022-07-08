@@ -1,3 +1,14 @@
 .cardImage {
-  width: 250px;
+  width: 100%;
+}
+.productCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #333842;
+  padding: 20px;
+}
+
+.itemTitle {
+  font-size: 20px;
+  color: #f5f5f5;
 }

@@ -1,16 +1,17 @@
 import styled from "styled-components";
 
 export const CategoryWrapper = styled.section`
+  background-color: #282c34;
   width: 100%;
   display: flex;
   margin: 0;
   padding: 0;
-  padding-top: 150px;
-  background-color: #f6f6f6;
 `;
 
 export const CategoryDisplay = styled.div`
-  width: 90%;
+  color: #f5f5f5;
+  padding-top: 150px;
+  width: 100%;
   display: flex;
   margin: 0 auto;
 `;
@@ -23,7 +24,11 @@ export const CategoryProductDisplay = styled.div`
   grid-gap: 25px;
   grid-template-columns: repeat(3, 1fr);
   margin: 60px auto;
-  max-width: 800px;
+  max-width: 80%;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const CategoryContainer = styled.div`
