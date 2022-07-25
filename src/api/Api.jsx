@@ -72,3 +72,4 @@ export const postOrder = async (user, cartItems, cartTotal, addressState) => {
     console.log(err);
   }
 };
+export const ServerUrl = "https://tech-ecommerce-server.herokuapp.com/";
